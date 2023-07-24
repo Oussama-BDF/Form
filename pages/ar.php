@@ -40,7 +40,7 @@
                             <img src="" class="cloudImg" alt="" style="float: left;">
                         </div>
                         <hr>
-                        <p class="redText">* يشير إلى أن معلومة مطلوبة</p>
+                        <p class="redText">* يشير إلى أن المعلومة مطلوبة</p>
                     </header>
                 </div>
             </div>

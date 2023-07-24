@@ -1,9 +1,10 @@
 <!-- Le script du formulaire -->
 <?php 
-    //Vérifier si les champs sont vides
-    function isEmpty(&$postData, &$stockData, &$msgErr){
+    //Vérifier si les champs(les valeurs de $_POST) sont vides
+    function isEmpty(&$postData, &$stockData, &$msgErrVar, &$msgErrVal) {
         if (empty($postData)){
-            $msgErr = " est obligatoire";
+            include("local/strings.php");
+            $msgErrVar = $$msgErrVal[0];
         } else {
             $stockData = test_entree($postData);
             return true;
@@ -12,15 +13,16 @@
     }
     // Supprimer les chars inutiles dans tous les variable de $_POST
     function test_entree($data) {
-        $data = trim($data);                //supprimer les caractères inutiles (espace supplémentaire, tabulation, saut de ligne)
+        $data = trim($data);                // Supprimer les caractères inutiles (espace supplémentaire, tabulation, saut de ligne)
         $data = stripslashes($data);        // Supprimer les anti-slashes (\)
-        $data = htmlspecialchars($data);    // escape the code (les tags ...)
+        $data = htmlspecialchars($data);    // Escape the code (les tags ...)
         return $data;
     }
     // Valider le text
-    function validText(&$text, &$msgErr){
+    function validText(&$text, &$msgErrVar, &$msgErrVal){
         if (!preg_match("/^[a-zA-Z-'éèà ]*$/", $text)){
-            $msgErr = "Seules les lettres et les espaces blancs sont autorisés";
+            include("local/strings.php");
+            $msgErrVar = $$msgErrVal[1];
         }
     }
     // ces variables vont contenir les données à envoyer
@@ -28,19 +30,20 @@
     $emailErr = $nomErr = $prenomErr = $titreStgErr = $orgErr = $dateErr = "";
     // Vérifier si les données sont envoyées (avec la methode post)
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sendForm"])){
-        if (isEmpty($_POST["email"], $email, $emailErr)){
+        if (isEmpty($_POST["email"], $email, $emailErr, $lng)){
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $emailErr = "Invalide email";
+                include("local/strings.php");
+                $emailErr = $$lng[2];
             }
         }
         if (!empty($_POST["titreStg"])){
             $titreStg = test_entree($_POST["titreStg"]);
-            validText($titreStg, $titreStgErr);
+            validText($titreStg, $titreStgErr, $lng);
         }
-        if (isEmpty($_POST["nom"], $nom, $nomErr))  validText($nom, $nomErr);
-        if (isEmpty($_POST["prenom"], $prenom, $prenomErr)) validText($prenom, $prenomErr);
-        if (isEmpty($_POST["org"], $org, $orgErr)) validText($org, $orgErr);
-        isEmpty($_POST["date"], $date, $dateErr);
+        if (isEmpty($_POST["nom"], $nom, $nomErr, $lng))            validText($nom, $nomErr, $lng);
+        if (isEmpty($_POST["prenom"], $prenom, $prenomErr, $lng))   validText($prenom, $prenomErr, $lng);
+        if (isEmpty($_POST["org"], $org, $orgErr, $lng))            validText($org, $orgErr, $lng);
+        isEmpty($_POST["date"], $date, $dateErr, $lng);
     }
 ?>
 
