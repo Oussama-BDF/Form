@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/formStyle.css?v=1.0.0">
-        <title>Formulaire "Stage d'initiation"</title>
+        <title><?php echo $message["home"]["head_item"]["titre"]; ?></title>
         <style>
             <?php if (isset($_COOKIE["modeCk"]) && $_COOKIE["modeCk"]=="dr")    include("assets/darkMode.css");?>
         </style>
@@ -18,8 +18,8 @@
             <div class="row " style="position: fixed; top: 5px; left: 5px; text-align: center; ">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
                     <select class="SelectLang" name="lang" onchange="this.form.submit()">
-                        <option class="SelectLang" value="fr">Francais</option>            
-                        <option class="SelectLang" value="ar">Arabe</option>
+                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["1"]["value"];?>"> <?php echo $message["home"]["selectLang"]["1"]["libelle"];?> </option>            
+                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["2"]["value"];?>"> <?php echo $message["home"]["selectLang"]["2"]["libelle"];?> </option>
                     </select>
                 </form>
                 <br>
@@ -30,15 +30,15 @@
             <div class="row flex">
                 <div class="col-100 mBlck-6">
                     <header class="item head">
-                        <h1>Formulaire "Stage d'initiation"</h3>
-                        <p>Formulaire pour la collecte des informations en relation avec les stages d'initiation</p>
+                        <h1><?php echo $message["home"]["head_item"]["titre"]; ?></h3>
+                        <p><?php echo $message["home"]["head_item"]["paragraphe"]; ?></p>
                         <hr>
                         <div class="emailImg">
-                            <p class="email" >oussama.boudafdafa@gmail.com <span class="bleuText">Changer de compte</span></p>
-                            <img  class="cloudImg" src="" alt="">
+                            <p class="email" >oussama.boudafdafa@gmail.com <span class="bleuText"><?php echo $message["home"]["head_item"]["changer_compte"]; ?></span></p>
+                            <img  class="cloudImg" src="" alt="" style="<?php if($lng == "ar") echo "float: left;"?>">
                         </div>
                         <hr>
-                        <p class="redText">* Indique une question obligatoire</p>
+                        <p class="redText"><?php echo $message["home"]["head_item"]["indication"]; ?></p>
                     </header>
                 </div>
             </div>
@@ -46,47 +46,47 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt ">
-                            <label for="em">Adresse e-mail <span class="redText">*<?php echo $emailErr;?></span></label>
-                            <input id="em" type="text" name= "email" placeholder="Votre adresse email">
+                            <label for="em"><?php echo $message["home"]["formulaire"]["email"]["libelle"]; ?><span class="redText"> *<?php echo $emailErr;?></span></label>
+                            <input id="em" type="text" name="email" placeholder="<?php echo $message["home"]["formulaire"]["email"]["placeholder"]; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="nom">Nom <span class="redText">*<?php echo $nomErr;?></span></label>
-                            <input id="nom" type="text" name= "nom" placeholder="Votre réponse">
+                            <label for="nom"><?php echo $message["home"]["formulaire"]["nom"]["libelle"]; ?><span class="redText"> *<?php echo $nomErr;?></span></label>
+                            <input id="nom" type="text" name="nom" placeholder="<?php echo $message["home"]["formulaire"]["nom"]["placeholder"]; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="pren">Prenom <span class="redText">*<?php echo $prenomErr;?></span></label>
-                            <input id="pren" type="text" name= "prenom" placeholder="Votre réponse">
+                            <label for="pren"><?php echo $message["home"]["formulaire"]["prenom"]["libelle"]; ?><span class="redText"> *<?php echo $prenomErr;?></span></label>
+                            <input id="pren" type="text" name="prenom" placeholder="<?php echo $message["home"]["formulaire"]["prenom"]["placeholder"]; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="titreStg">Titre du stage <span class="redText"><?php echo $titreStgErr;?></span></label>
-                            <input id="titreStg" type="text" name= "titreStg" placeholder="Votre réponse">
+                            <label for="titreStg"><?php echo $message["home"]["formulaire"]["titreStg"]["libelle"]; ?><span class="redText"><?php echo $titreStgErr;?></span></label>
+                            <input id="titreStg" type="text" name="titreStg" placeholder="<?php echo $message["home"]["formulaire"]["titreStg"]["placeholder"]; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="org">Organisme d'accueil <span class="redText">*<?php echo $orgErr;?></span></label>
-                            <input id="org" type="text" name= "org" placeholder="Votre réponse">
+                            <label for="org"><?php echo $message["home"]["formulaire"]["org"]["libelle"]; ?><span class="redText"> *<?php echo $orgErr;?></span></label>
+                            <input id="org" type="text" name="org" placeholder="<?php echo $message["home"]["formulaire"]["org"]["placeholder"]; ?>">
                         </div>
                     </div>
                 </div>
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="date">Date debut de stage <span class="redText">*<?php echo $dateErr;?></span></label>
+                            <label for="date"><?php echo $message["home"]["formulaire"]["date"]["libelle"];?><span class="redText"> *<?php echo $dateErr;?></span></label>
                             <input id="date" type="date" name="date">
                         </div>
                     </div>
@@ -94,8 +94,8 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class=" buttons">
-                            <input class="envoyer" type="submit" value="Envoyer" name="sendForm">
-                            <input class="effacer" type="reset" value="Effacer le formulaire" name="effacer">
+                            <input class="envoyer" type="submit" value="<?php echo $message["home"]["formulaire"]["envoyer"];?>" name="sendForm">
+                            <input class="effacer" type="reset" value="<?php echo $message["home"]["formulaire"]["effacer"];?>" name="effacer" style="<?php if($lng == "ar") echo "float: left;"?>">
                         </div>
                     </div>
                 </div>
@@ -103,8 +103,8 @@
             <div class="row flex">
                 <div class="col-100 mBlck-6">
                     <footer>
-                        <p>N'envoyez jamais de mots de passe via Google Forms.</p>
-                        <p class="centre">Ce formulaire a été créé dans Universite Chouaib Doukkali. <u>Signaler un cas d'utilisation abusive</u></p>
+                        <p><?php echo $message["home"]["footer"]["N'envoyez"];?></p>
+                        <p class="centre"><?php echo $message["home"]["footer"]["ceForm"];?><u><?php echo $message["home"]["footer"]["Signaler"];?></u></p>
                         <p class="centre GoogleForms"><b>Google</b> Forms</p>
                     </footer>
                 </div>
@@ -114,12 +114,5 @@
             </div>
             
         </div>
-
-
-        <!-- document.getElementById("id1").innerHTML="new text"; // .att="new value"  // .style.att="new value" // -->
-        <!-- <button type="button" onclick="function3()">click</button>
-        <p id="id1"></p>
-        <script src="Formulaire.js"></script> -->
     </body>
 </html>
-

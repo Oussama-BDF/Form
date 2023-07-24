@@ -1,7 +1,6 @@
 <!-- Le script du formulaire -->
 <?php 
-
-include("local/".$lng.".php");
+    include("local/".$lng.".php");
     //Vérifier si les champs(les valeurs de $_POST) sont vides
    function isEmpty(&$postData, &$stockData, &$msgErrVar) {
         if (empty($postData)){
