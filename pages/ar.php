@@ -4,9 +4,8 @@
 ?>
 
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html dir="<?php echo ($lng == 'ar') ? 'rtl' : 'ltr' ;  ?>">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/formStyle.css?v=1.0.0">
@@ -15,7 +14,7 @@
             <?php if (isset($_COOKIE["modeCk"]) && $_COOKIE["modeCk"]=="dr")    include("assets/darkMode.css");?>
         </style>
     </head>
-    <body style="direction: rtl;">
+    <body >
         <div class="container">
             <div class="row" style="position: fixed; top: 5px; left: 5px; text-align: center;">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">

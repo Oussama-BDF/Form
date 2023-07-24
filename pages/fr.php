@@ -4,7 +4,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html dir="<?php echo ($lng == 'ar') ? 'rtl' : 'ltr' ;  ?>">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/formStyle.css?v=1.0.0">

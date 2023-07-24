@@ -1,10 +1,12 @@
 <!-- Le script du formulaire -->
 <?php 
+
+include("local/".$lng.".php");
     //Vérifier si les champs(les valeurs de $_POST) sont vides
-    function isEmpty(&$postData, &$stockData, &$msgErrVar, &$msgErrVal) {
+   function isEmpty(&$postData, &$stockData, &$msgErrVar) {
         if (empty($postData)){
-            include("local/strings.php");
-            $msgErrVar = $$msgErrVal[0];
+            global $message;
+            $msgErrVar =  $message["validation"]["required"] ??  "hello" ;
         } else {
             $stockData = test_entree($postData);
             return true;
@@ -19,10 +21,10 @@
         return $data;
     }
     // Valider le text
-    function validText(&$text, &$msgErrVar, &$msgErrVal){
+    function validText(&$text, &$msgErrVar){
         if (!preg_match("/^[a-zA-Z-'éèà ]*$/", $text)){
-            include("local/strings.php");
-            $msgErrVar = $$msgErrVal[1];
+            global $message;
+            $msgErrVar =  $message["validation"]["text"] ;
         }
     }
     // ces variables vont contenir les données à envoyer
@@ -30,20 +32,20 @@
     $emailErr = $nomErr = $prenomErr = $titreStgErr = $orgErr = $dateErr = "";
     // Vérifier si les données sont envoyées (avec la methode post)
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sendForm"])){
-        if (isEmpty($_POST["email"], $email, $emailErr, $lng)){
+        if (isEmpty($_POST["email"], $email, $emailErr)){
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                include("local/strings.php");
-                $emailErr = $$lng[2];
-            }
+                global $message;
+                $emailErr =  $message["validation"]["email"];
+             }
         }
         if (!empty($_POST["titreStg"])){
             $titreStg = test_entree($_POST["titreStg"]);
-            validText($titreStg, $titreStgErr, $lng);
+            validText($titreStg, $titreStgErr);
         }
-        if (isEmpty($_POST["nom"], $nom, $nomErr, $lng))            validText($nom, $nomErr, $lng);
-        if (isEmpty($_POST["prenom"], $prenom, $prenomErr, $lng))   validText($prenom, $prenomErr, $lng);
-        if (isEmpty($_POST["org"], $org, $orgErr, $lng))            validText($org, $orgErr, $lng);
-        isEmpty($_POST["date"], $date, $dateErr, $lng);
+        if (isEmpty($_POST["nom"], $nom, $nomErr))            validText($nom, $nomErr);
+        if (isEmpty($_POST["prenom"], $prenom, $prenomErr))   validText($prenom, $prenomErr);
+        if (isEmpty($_POST["org"], $org, $orgErr))            validText($org, $orgErr);
+        isEmpty($_POST["date"], $date, $dateErr);
     }
 ?>
 
