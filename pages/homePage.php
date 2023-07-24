@@ -18,8 +18,8 @@
             <div class="row " style="position: fixed; top: 5px; left: 5px; text-align: center; ">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "POST">
                     <select class="SelectLang" name="lang" onchange="this.form.submit()">
-                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["1"]["value"];?>"> <?php echo $message["home"]["selectLang"]["1"]["libelle"];?> </option>            
-                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["2"]["value"];?>"> <?php echo $message["home"]["selectLang"]["2"]["libelle"];?> </option>
+                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["lang1"]["value"];?>"> <?php echo $message["home"]["selectLang"]["lang1"]["libelle"];?> </option>            
+                        <option class="SelectLang" value="<?php echo $message["home"]["selectLang"]["lang2"]["value"];?>"> <?php echo $message["home"]["selectLang"]["lang2"]["libelle"];?> </option>
                     </select>
                 </form>
                 <br>
@@ -46,7 +46,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt ">
-                            <label for="em"><?php echo $message["home"]["formulaire"]["email"]["libelle"]; ?><span class="redText"> *<?php echo $emailErr;?></span></label>
+                            <label for="em"><?php echo $message["home"]["formulaire"]["email"]["libelle"]; ?><span class="redText">*<?php echo validate($_POST["email"], $email, "validateEmail");?></span></label>
                             <input id="em" type="text" name="email" placeholder="<?php echo $message["home"]["formulaire"]["email"]["placeholder"]; ?>">
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="nom"><?php echo $message["home"]["formulaire"]["nom"]["libelle"]; ?><span class="redText"> *<?php echo $nomErr;?></span></label>
+                            <label for="nom"><?php echo $message["home"]["formulaire"]["nom"]["libelle"]; ?><span class="redText">*<?php echo validate($_POST["nom"], $nom, "validateText");?></span></label>
                             <input id="nom" type="text" name="nom" placeholder="<?php echo $message["home"]["formulaire"]["nom"]["placeholder"]; ?>">
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="pren"><?php echo $message["home"]["formulaire"]["prenom"]["libelle"]; ?><span class="redText"> *<?php echo $prenomErr;?></span></label>
+                            <label for="pren"><?php echo $message["home"]["formulaire"]["prenom"]["libelle"]; ?><span class="redText">*<?php echo validate($_POST["prenom"], $prenom, "validateText");?></span></label>
                             <input id="pren" type="text" name="prenom" placeholder="<?php echo $message["home"]["formulaire"]["prenom"]["placeholder"]; ?>">
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="titreStg"><?php echo $message["home"]["formulaire"]["titreStg"]["libelle"]; ?><span class="redText"><?php echo $titreStgErr;?></span></label>
+                            <label for="titreStg"><?php echo $message["home"]["formulaire"]["titreStg"]["libelle"]; ?><span class="redText"><?php echo validate($_POST["titreStg"], $titreStg, "validateText", false);?></span></label>
                             <input id="titreStg" type="text" name="titreStg" placeholder="<?php echo $message["home"]["formulaire"]["titreStg"]["placeholder"]; ?>">
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="org"><?php echo $message["home"]["formulaire"]["org"]["libelle"]; ?><span class="redText"> *<?php echo $orgErr;?></span></label>
+                            <label for="org"><?php echo $message["home"]["formulaire"]["org"]["libelle"]; ?><span class="redText">*<?php echo validate($_POST["org"], $org, "validateText");?></span></label>
                             <input id="org" type="text" name="org" placeholder="<?php echo $message["home"]["formulaire"]["org"]["placeholder"]; ?>">
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                 <div class="row flex">
                     <div class="col-100 mBlck-6">
                         <div class="item inpt">
-                            <label for="date"><?php echo $message["home"]["formulaire"]["date"]["libelle"];?><span class="redText"> *<?php echo $dateErr;?></span></label>
+                            <label for="date"><?php echo $message["home"]["formulaire"]["date"]["libelle"];?><span class="redText">*<?php echo validate($_POST["date"], $date);?></span></label>
                             <input id="date" type="date" name="date">
                         </div>
                     </div>

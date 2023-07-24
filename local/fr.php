@@ -3,11 +3,11 @@
     $message=[
         "home" => [
             "selectLang" => [
-                "1" => [
+                "lang1" => [
                     "libelle" => "Francais",
                     "value" => "fr"
                 ],
-                "2" => [
+                "lang2" => [
                     "libelle" => "Arabe",
                     "value" => "ar"
                 ]
@@ -20,27 +20,27 @@
             ],
             "formulaire" => [
                 "email" => [
-                    "libelle" => "Adresse e-mail",
+                    "libelle" => "Adresse e-mail ",
                     "placeholder" => "Votre adresse email"
                 ],
                 "nom" => [
-                    "libelle" => "Nom",
+                    "libelle" => "Nom ",
                     "placeholder" => "Votre nom"
                 ],
                 "prenom" => [
-                    "libelle" => "Prenom",
+                    "libelle" => "Prenom ",
                     "placeholder" => "Votre prenom"
                 ],
                 "titreStg" => [
-                    "libelle" => "Titre du stage",
+                    "libelle" => "Titre du stage ",
                     "placeholder" => "Votre titre du stage"
                 ],
                 "org" => [
-                    "libelle" => "Organisme d'accueil",
+                    "libelle" => "Organisme d'accueil ",
                     "placeholder" => "Votre organisme d'accueil"
                 ],
                 "date" => [
-                    "libelle" => "Date debut de stage"
+                    "libelle" => "Date debut de stage "
                 ],
                 "envoyer" => "Envoyer",
                 "effacer" => "Effacer le formulaire"
@@ -52,8 +52,8 @@
             ]
         ],
         "validation" => [
-            "required"=>  "Est obligatoire",
-            "text" => "Seules les lettres et les espaces blancs sont autorisés",
-            "email" => "Email invalide"
+            "required"=>  "est obligatoire",
+            "text" => "seules les lettres et les espaces blancs sont autorisés",
+            "email" => "email invalide"
         ]
     ];

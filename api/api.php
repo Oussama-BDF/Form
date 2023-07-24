@@ -1,50 +1,43 @@
 <!-- Le script du formulaire -->
 <?php 
-    include("local/".$lng.".php");
-    //Vérifier si les champs(les valeurs de $_POST) sont vides
-   function isEmpty(&$postData, &$stockData, &$msgErrVar) {
-        if (empty($postData)){
-            global $message;
-            $msgErrVar =  $message["validation"]["required"] ??  "hello" ;
-        } else {
-            $stockData = test_entree($postData);
-            return true;
-        }
-        return false;
-    }
-    // Supprimer les chars inutiles dans tous les variable de $_POST
-    function test_entree($data) {
-        $data = trim($data);                // Supprimer les caractères inutiles (espace supplémentaire, tabulation, saut de ligne)
-        $data = stripslashes($data);        // Supprimer les anti-slashes (\)
-        $data = htmlspecialchars($data);    // Escape the code (les tags ...)
+    include("local/".$lng.".php"); //par rapport la langue
+    // on va stocker les valeur de POST dans ces variables
+    $email = $nom = $prenom = $titreStg = $org = $date = "";
+
+    // Supprimer les chars inutiles dans tous les variables de $_POST
+    function dlt_unnecessary_chars($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
         return $data;
     }
+    // Valider l'email
+    function validateEmail(&$email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            global $message;
+            return  $message["validation"]["email"];
+        }
+        return "";
+    }
     // Valider le text
-    function validText(&$text, &$msgErrVar){
+    function validateText(&$text){
         if (!preg_match("/^[a-zA-Z-'éèà ]*$/", $text)){
             global $message;
-            $msgErrVar =  $message["validation"]["text"] ;
+            return  $message["validation"]["text"] ;
         }
+        return "";
     }
-    // ces variables vont contenir les données à envoyer
-    $email = $nom = $prenom = $titreStg = $org = $date = "";
-    $emailErr = $nomErr = $prenomErr = $titreStgErr = $orgErr = $dateErr = "";
-    // Vérifier si les données sont envoyées (avec la methode post)
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sendForm"])){
-        if (isEmpty($_POST["email"], $email, $emailErr)){
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    // Si les champs(les valeurs de $_POST) ne sont pas vides => valider la donnée
+    function validate(&$postData, &$stockData, $validate="", $isRequired=True) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sendForm"])){
+            if (empty($postData)){
                 global $message;
-                $emailErr =  $message["validation"]["email"];
-             }
+                return  ($isRequired)? $message["validation"]["required"] : "";
+            } else {
+                $stockData = dlt_unnecessary_chars($postData);
+                return (function_exists($validate)? $validate($stockData) : "");
+            }
         }
-        if (!empty($_POST["titreStg"])){
-            $titreStg = test_entree($_POST["titreStg"]);
-            validText($titreStg, $titreStgErr);
-        }
-        if (isEmpty($_POST["nom"], $nom, $nomErr))            validText($nom, $nomErr);
-        if (isEmpty($_POST["prenom"], $prenom, $prenomErr))   validText($prenom, $prenomErr);
-        if (isEmpty($_POST["org"], $org, $orgErr))            validText($org, $orgErr);
-        isEmpty($_POST["date"], $date, $dateErr);
     }
 ?>
 
