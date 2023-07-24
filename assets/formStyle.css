@@ -1,0 +1,167 @@
+body{
+    background-color: rgb(240 235 248);
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 15px;
+}
+
+.container{
+    width: 646px;
+    max-width: 646px;
+    margin: 0px auto;
+}
+
+.row.flex{
+    width: 100%;
+    display: flex;
+}
+
+.col-100{
+    width: 100%;
+}
+
+.col-50{
+    width: 50%;
+    margin: 0px auto;  /* pour mettre l'élément au centre */
+}
+
+.mBlck-6{
+    margin-block: 6px;
+}
+
+/* *********************All the items******************** */
+.item{
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgb(205, 209, 218);
+    padding: 23px;
+}
+
+.redText{
+    color: red;
+}
+
+/* *********************header item********************** */
+.item.head{
+    border-top: 10px solid rebeccapurple;
+    padding-bottom: 0px;
+}
+
+.item.head h1{
+    margin-top: 0px;
+    margin-bottom: 130px;
+    font-weight: lighter;
+    font-size: 32px;
+}
+
+.item.head hr{
+    border: none;
+    background-color: rgb(205, 209, 218);
+    height: 1px;
+}
+
+.item.head .email{
+    display: inline;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+}
+
+.item.head .bleuText{
+    color: rgb(66, 131, 206);
+    cursor: pointer;
+}
+
+.item.head .cloudImg{
+    width: 26px;
+    height: 24px;
+    float: right;
+    cursor: pointer;
+    content: url("images/blackCloud.png");
+
+}
+
+.item.head .emailImg{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* ***********************input items******************** */
+.item.inpt label{
+    display: block;
+    margin-bottom: 30px;
+}
+
+.item.inpt input{
+    border: none;
+    border-bottom: 1px solid rgb(205, 209, 218);
+    width: 270px;
+}
+
+/* ********************Buttons******************* */
+.buttons .envoyer{
+    background-color: rebeccapurple;
+    color: white;
+    font-weight: bold;
+    width: auto;
+    height: auto;
+    padding: 10px 23px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons .effacer{
+    background-color: transparent;
+    color: rebeccapurple;
+    font-weight: bold;
+    width: auto;
+    height: auto;
+    padding: 10px 8px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    
+}
+
+.SelectLang{
+    background-color: rebeccapurple;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+.ModeCh{
+    background: transparent url("images/mode.png") no-repeat ;
+    background-size: contain;
+    color: transparent;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* *************************footer************************* */
+footer{
+    font-size: 12px;
+    color: rgb(104, 104, 104);
+}
+
+footer .centre{
+    text-align: center;
+}
+
+footer .GoogleForms{
+    font-size: 22px;
+}
+
+/* ************************info**************************** */
+.info{
+    height: 23px;
+    margin-inline: 10px;
+    margin-block: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+}

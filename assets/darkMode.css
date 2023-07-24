@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(33 23 49);
+    color: white;
+}
+
+.item {
+    background-color: #262233;
+}
+
+.item.inpt input{
+    background-color: #262233;
+    color: white;
+}
+
+.item.head .cloudImg{
+    content: url("assets/images/whiteCloud.png");
+}
