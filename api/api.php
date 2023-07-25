@@ -1,6 +1,6 @@
 <!-- Le script du formulaire -->
 <?php 
-    include("local/".$lng.".php"); //par rapport la langue
+    include("local/".$pageLanguage.".php"); //par rapport la langue
     // on va stocker les valeur de POST dans ces variables
     $email = $nom = $prenom = $titreStg = $org = $date = "";
 
@@ -17,7 +17,7 @@
             global $message;
             return  $message["validation"]["email"];
         }
-        return "";
+        return NULL;
     }
     // Valider le text
     function validateText(&$text){
@@ -25,21 +25,34 @@
             global $message;
             return  $message["validation"]["text"] ;
         }
-        return "";
+        return NULL;
     }
     // Si les champs(les valeurs de $_POST) ne sont pas vides => valider la donnée
-    function validate(&$postData, &$stockData, $validate="", $isRequired=True) {
+    function validate(&$postData, &$stockData, $feildName, $validate="", $isRequired=True) {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["sendForm"])){
             if (empty($postData)){
                 global $message;
-                return  ($isRequired)? $message["validation"]["required"] : "";
+                return ($isRequired)? $message["home"]["formulaire"][$feildName]["libelle"]." ".$message["validation"]["required"] : NULL;
             } else {
                 $stockData = dlt_unnecessary_chars($postData);
-                return (function_exists($validate)? $validate($stockData) : "");
+                return (function_exists($validate)? $validate($stockData) : NULL);
             }
         }
     }
+
+    function displayErrMsg(&$postData, &$stockData, $feildName, $validate="", $isRequired=True){
+        $errMsg = validate($postData, $stockData, $feildName, $validate, $isRequired);
+        if($errMsg){
+            echo '<p class="redText errMessage">';
+            echo    '<style>.redText.errMessage{display:block;}</style>';
+            echo    '<img class="exclamationImage" src="assets/images/exclamation.png" alt="">';
+            echo    "      ".$errMsg;
+            echo '</p>';
+        }
+    }
 ?>
+
+
 
 <!-- Le script pour changer la langue -->
 <?php 

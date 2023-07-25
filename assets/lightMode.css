@@ -1,20 +1,20 @@
 body {
-    background-color: rgb(33 23 49);
-    color: white;
+    background-color: rgb(240 235 248);
+    color: black;
 }
 
 /* *******************All the items******************* */
 .item {
-    background-color: #262233;
+    background-color: white;
 }
 
 /* *******************header item********************** */
 .item.head .cloudImg{
-    content: url("images/whiteCloud.png");
+    content: url("images/blackCloud.png");
 }
 
 /* *******************input items********************* */
 .item.inpt input{
-    background-color: #262233;
-    color: white;
+    background-color: white;
+    color: black;
 }

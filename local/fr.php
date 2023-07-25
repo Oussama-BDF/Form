@@ -2,7 +2,8 @@
 
     $message=[
         "home" => [
-            "selectLang" => [
+            "titre" => 'Formulaire "Stage d\'initiation"',
+            "selectLanguage" => [
                 "lang1" => [
                     "libelle" => "Francais",
                     "value" => "fr"

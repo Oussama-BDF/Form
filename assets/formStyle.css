@@ -1,7 +1,7 @@
 body{
-    background-color: rgb(240 235 248);
-    font-family: Helvetica,Arial,sans-serif;
     font-size: 15px;
+    font-family: Roboto,Arial,sans-serif;
+    font-weight: 400;
 }
 
 .container{
@@ -11,33 +11,27 @@ body{
 }
 
 .row.flex{
-    width: 100%;
     display: flex;
+    width: 100%;
 }
 
 .col-100{
     width: 100%;
 }
 
-.col-50{
-    width: 50%;
-    margin: 0px auto;  /* pour mettre l'élément au centre */
-}
-
-.mBlck-6{
+.mrgBlck-6{
     margin-block: 6px;
 }
 
 /* *********************All the items******************** */
 .item{
-    background-color: white;
+    padding: 23px;
     border-radius: 10px;
     border: 1px solid rgb(205, 209, 218);
-    padding: 23px;
 }
 
 .redText{
-    color: red;
+    color: #d93025;
 }
 
 /* *********************header item********************** */
@@ -47,22 +41,21 @@ body{
 }
 
 .item.head h1{
+    font-size: 32px;
+    font-weight: lighter;
     margin-top: 0px;
     margin-bottom: 130px;
-    font-weight: lighter;
-    font-size: 32px;
 }
 
 .item.head hr{
-    border: none;
     background-color: rgb(205, 209, 218);
     height: 1px;
+    border: none;
 }
 
 .item.head .email{
     display: inline;
     color: rgb(104, 104, 104);
-    font-weight: bold;
 }
 
 .item.head .bleuText{
@@ -75,8 +68,6 @@ body{
     height: 24px;
     float: right;
     cursor: pointer;
-    content: url("images/blackCloud.png");
-
 }
 
 .item.head .emailImg{
@@ -91,9 +82,19 @@ body{
 }
 
 .item.inpt input{
+    width: 270px;
     border: none;
     border-bottom: 1px solid rgb(205, 209, 218);
-    width: 270px;
+}
+
+.item.inpt .errMessage{
+    margin: 23px 5px 0px;
+    font-size: 12px;
+}
+
+.item.inpt .errMessage .exclamationImage{
+    vertical-align: middle;
+    width: 18px
 }
 
 /* ********************Buttons******************* */
@@ -101,8 +102,6 @@ body{
     background-color: rebeccapurple;
     color: white;
     font-weight: bold;
-    width: auto;
-    height: auto;
     padding: 10px 23px;
     border-radius: 5px;
     border: none;
@@ -113,24 +112,22 @@ body{
     background-color: transparent;
     color: rebeccapurple;
     font-weight: bold;
-    width: auto;
-    height: auto;
     padding: 10px 8px;
     border: none;
     cursor: pointer;
     float: right;
-    
 }
 
-.SelectLang{
+.SelectLanguage{
     background-color: rebeccapurple;
     color: white;
     font-weight: bold;
+    width: 100px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100px;
 }
-.ModeCh{
+
+.changeMode{
     background: transparent url("images/mode.png") no-repeat ;
     background-size: contain;
     color: transparent;

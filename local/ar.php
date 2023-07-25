@@ -2,7 +2,8 @@
 
     $message=[
         "home" => [
-            "selectLang" => [
+            "titre" => 'استمارة "التدريب التهييئي"',
+            "selectLanguage" => [
                 "lang1" => [
                     "libelle" => "العربية",
                     "value" => "ar"
