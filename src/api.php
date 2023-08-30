@@ -44,7 +44,6 @@
         $errMsg = validate($postData, $stockData, $feildName, $validate, $isRequired);
         if($errMsg){
             echo '<p class="redText errMessage">';
-            echo    '<style>.redText.errMessage{display:block;}</style>';
             echo    '<img class="exclamationImage" src="assets/images/exclamation.png" alt="">';
             echo    "      ".$errMsg;
             echo '</p>';

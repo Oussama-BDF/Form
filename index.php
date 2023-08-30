@@ -1,5 +1,5 @@
 <?php 
     $pageLanguage = (isset($_COOKIE['langCk'])) ? $_COOKIE['langCk'] : "fr";
-    include("pages/homePage.php"); 
+    include("pages/home.php"); 
     exit();
 ?>
